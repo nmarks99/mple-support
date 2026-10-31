@@ -1,8 +1,0 @@
-set(path "$ENV{SOURCE_DIR}/CMakeLists.txt")
-file(READ "${path}" content)
-string(FIND "${content}" "CMAKE_BINARY_DIR" position)
-if(position EQUAL -1)
-    message(FATAL_ERROR "Expected CMAKE_BINARY_DIR references not found in ${path}")
-endif()
-string(REPLACE "CMAKE_BINARY_DIR" "PROJECT_BINARY_DIR" content "${content}")
-file(WRITE "${path}" "${content}")

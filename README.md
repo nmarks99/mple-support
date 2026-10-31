@@ -1,6 +1,6 @@
 # mple-support
 
-CMake superbuild for the non-EPICS dependencies used by `mple`.
+CMake superbuild for the non-EPICS dependencies used by `mple`. Each dependency is configured, built, and installed independently with `ExternalProject_Add()`.
 
 ## Build
 
