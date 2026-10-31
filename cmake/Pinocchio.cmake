@@ -13,6 +13,8 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/ros/console_bridge.git
     GIT_TAG ${MPLE_SUPPORT_CONSOLE_BRIDGE_REVISION}
     GIT_SHALLOW FALSE
+    PATCH_COMMAND ${CMAKE_COMMAND} -E env SOURCE_DIR=<SOURCE_DIR>
+        ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/../patches/console_bridge.cmake
     OVERRIDE_FIND_PACKAGE
 )
 FetchContent_MakeAvailable(console_bridge)
@@ -23,15 +25,23 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/ros/urdfdom_headers.git
     GIT_TAG ${MPLE_SUPPORT_URDFDOM_HEADERS_REVISION}
     GIT_SHALLOW FALSE
+    PATCH_COMMAND ${CMAKE_COMMAND} -E env SOURCE_DIR=<SOURCE_DIR>
+        ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/../patches/urdfdom_headers.cmake
     OVERRIDE_FIND_PACKAGE
 )
 FetchContent_MakeAvailable(urdfdom_headers)
+file(
+    WRITE ${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/urdfdom_headers-extra.cmake
+    "set(urdfdom_headers_VERSION 3.0.1)\n"
+)
 
 FetchContent_Declare(
     urdfdom
     GIT_REPOSITORY https://github.com/ros/urdfdom.git
     GIT_TAG ${MPLE_SUPPORT_URDFDOM_REVISION}
     GIT_SHALLOW FALSE
+    PATCH_COMMAND ${CMAKE_COMMAND} -E env SOURCE_DIR=<SOURCE_DIR>
+        ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/../patches/urdfdom.cmake
     OVERRIDE_FIND_PACKAGE
 )
 FetchContent_MakeAvailable(urdfdom)
