@@ -8,5 +8,5 @@ cmake -S "$root" -B "$root/build/$arch" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$root/install/$arch" \
     "$@"
-cmake --build "$root/build/$arch" --parallel
+cmake --build "$root/build/$arch" --parallel 4
 cmake --install "$root/build/$arch"
