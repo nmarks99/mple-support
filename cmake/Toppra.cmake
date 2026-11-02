@@ -4,6 +4,8 @@ ExternalProject_Add(
     GIT_TAG ${MPLE_SUPPORT_TOPPRA_REVISION}
     GIT_SHALLOW FALSE
     UPDATE_DISCONNECTED TRUE
+    # TOPP-RA hardcodes lib, so patch it to honor the superbuild's CMAKE_INSTALL_LIBDIR.
+    PATCH_COMMAND git apply --whitespace=nowarn ${CMAKE_CURRENT_LIST_DIR}/../patches/toppra-gnu-install-dirs.patch
     SOURCE_SUBDIR cpp
     INSTALL_DIR ${MPLE_SUPPORT_INSTALL_PREFIX}
     DEPENDS eigen
