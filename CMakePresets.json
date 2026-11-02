@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "release",
+      "displayName": "Release build",
+      "binaryDir": "${sourceDir}/build/$env{EPICS_HOST_ARCH}",
+      "installDir": "${sourceDir}/install/$env{EPICS_HOST_ARCH}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ]
+}
